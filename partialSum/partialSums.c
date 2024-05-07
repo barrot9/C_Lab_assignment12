@@ -77,7 +77,7 @@ int main(int argc, char *argv[]) {
 
     /* Free dynamically allocated memory */
     free(myArray);
-    free(result); // Free the memory allocated by partialSums
+    free(result); /*Free the memory allocated by partialSums*/ 
 
     return 0;
 }
