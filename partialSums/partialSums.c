@@ -8,6 +8,8 @@ int main() {
 
     int size;
     int* myArray;
+    int* result;
+    int i = 0;
 
     /* prompt the user for input */
     printf("Enter the size of the array: ");
@@ -22,7 +24,7 @@ int main() {
 
     /* Getting input for each element of the array from the user */
     printf("Enter %d integers:\n\n", size);
-    for (int i = 0; i < size; i++) {
+    for (i = 0; i < size; i++) {
         scanf("%d", &myArray[i]);
     }
 
@@ -31,16 +33,16 @@ int main() {
 
     /* Display the input */
     printf("Array data:\n");
-    for (int i = 0; i < size; i++) {
+    for (i = 0; i < size; i++) {
         printf("%d ", myArray[i]);
     }
 
     /* Calling partialSums */
-    int* result = partialSums(myArray, size);
+    result = partialSums(myArray, size);
 
     /* Print the new array containing partial sums */
     printf("\n\nNew array with partial sums:\n");
-    for (int i = 0; i < size; i++) {
+    for (i = 0; i < size; i++) {
         printf("%d ", result[i]);
     }
 
@@ -55,14 +57,16 @@ int main() {
 int* partialSums(int array[], int size) {
     /* Dynamically allocate memory for the new array */
     int* newArray = (int*)malloc(size * sizeof(int));
+    int sum = 0;
+    int i = 0;
     if (newArray == NULL) {
         printf("Memory allocation failed");
         exit(0);
     }
 
     /* Calculate partial sums */
-    int sum = 0;
-    for (int i = 0; i < size; i++) {
+    
+    for (i = 0; i < size; i++) {
         sum += array[i];
         newArray[i] = sum;
     }

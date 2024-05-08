@@ -1,4 +1,4 @@
-my_add: partialSums.o
+partialSums: partialSums.o
 	gcc -ansi -Wall -pedantic -o partialSums
-my_add.o: partialSums.c
+partialSums.o: partialSums.c
 	gcc -ansi -Wall -pedantic partialSums.c
