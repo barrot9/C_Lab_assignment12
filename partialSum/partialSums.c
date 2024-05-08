@@ -4,80 +4,49 @@
 /* Function prototype */
 int* partialSums(int array[], int size);
 
-int main(int argc, char *argv[]) {
+int main() {
+
     int size;
     int* myArray;
 
-    /* Check if a file name is provided as a command-line argument */
-    if (argc > 1) {
-        /* Open the file for reading */
-        FILE *file = fopen(argv[1], "r");
-        if (file == NULL) {
-            fprintf(stderr, "Unable to open file %s\n", argv[1]);
-            exit(EXIT_FAILURE);
-        }
+    /* prompt the user for input */
+    printf("Enter the size of the array: ");
+    scanf("%d", &size);
 
-        /* Read the size of the array from the file */
-        fscanf(file, "%d", &size);
-
-        /* Dynamically allocate memory for the array */
-        myArray = (int*)malloc(size * sizeof(int));
-        if (myArray == NULL) {
-            fprintf(stderr, "Memory allocation failed\n");
-            exit(EXIT_FAILURE);
-        }
-
-        /* Read input for each element of the array from the file */
-        for (int i = 0; i < size; i++) {
-            fscanf(file, "%d", &myArray[i]);
-        }
-
-        /* Close the file */
-        fclose(file);
-    } 
-    else {
-        /* If no file name provided, prompt the user for input */
-        printf("Enter the size of the array: ");
-        scanf("%d", &size);
-
-        /* Dynamically allocate memory for the array */
-        myArray = (int*)malloc(size * sizeof(int));
-        if (myArray == NULL) {
-            fprintf(stderr, "Memory allocation failed\n");
-            exit(EXIT_FAILURE);
-        }
-
-        /* Getting input for each element of the array from the user */
-        printf("Enter %d integers:\n", size);
-        for (int i = 0; i < size; i++) {
-            scanf("%d", &myArray[i]);
-        }
+    /* Dynamically allocate memory for the array */
+    myArray = (int*)malloc(size * sizeof(int));
+    if (myArray == NULL) {
+        printf("Memory allocation failed");
+        exit(0);
     }
 
-    printf("\n");
+    /* Getting input for each element of the array from the user */
+    printf("Enter %d integers:\n\n", size);
+    for (int i = 0; i < size; i++) {
+        scanf("%d", &myArray[i]);
+    }
+
     /* Display the size of the array */
     printf("Size of the array: %d\n\n", size);
 
     /* Display the input */
-    printf("Array data given by the user:\n");
+    printf("Array data:\n");
     for (int i = 0; i < size; i++) {
         printf("%d ", myArray[i]);
     }
-    printf("\n\n");
 
     /* Calling partialSums */
     int* result = partialSums(myArray, size);
 
     /* Print the new array containing partial sums */
-    printf("New array with partial sums:\n");
+    printf("\n\nNew array with partial sums:\n");
     for (int i = 0; i < size; i++) {
         printf("%d ", result[i]);
     }
-    printf("\n");
 
     /* Free dynamically allocated memory */
     free(myArray);
-    free(result); /*Free the memory allocated by partialSums*/ 
+    free(result);  
 
     return 0;
 }
@@ -87,8 +56,8 @@ int* partialSums(int array[], int size) {
     /* Dynamically allocate memory for the new array */
     int* newArray = (int*)malloc(size * sizeof(int));
     if (newArray == NULL) {
-        fprintf(stderr, "Memory allocation failed\n");
-        exit(EXIT_FAILURE);
+        printf("Memory allocation failed");
+        exit(0);
     }
 
     /* Calculate partial sums */
