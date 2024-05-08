@@ -1,4 +1,4 @@
 partialSums: partialSums.o
-	gcc -ansi -Wall -pedantic -o partialSums
+	gcc -ansi -Wall -pedantic partialSums.o -o partialSums
 partialSums.o: partialSums.c
-	gcc -ansi -Wall -pedantic partialSums.c
+	gcc -c -ansi -Wall -pedantic partialSums.c -o partialSums.o

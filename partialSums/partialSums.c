@@ -23,13 +23,13 @@ int main() {
     }
 
     /* Getting input for each element of the array from the user */
-    printf("Enter %d integers:\n\n", size);
+    printf("\nEnter %d integers:\n", size);
     for (i = 0; i < size; i++) {
         scanf("%d", &myArray[i]);
     }
 
     /* Display the size of the array */
-    printf("Size of the array: %d\n\n", size);
+    printf("\nSize of the array: %d\n\n", size);
 
     /* Display the input */
     printf("Array data:\n");
@@ -45,6 +45,8 @@ int main() {
     for (i = 0; i < size; i++) {
         printf("%d ", result[i]);
     }
+
+    printf("\n\n");
 
     /* Free dynamically allocated memory */
     free(myArray);
